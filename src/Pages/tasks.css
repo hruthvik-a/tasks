@@ -1,0 +1,15 @@
+.tasks-main {
+    width: 20vw;
+    height: 20vh;
+    border: 1px rgb(10 9 9);
+    -webkit-box-shadow: 5px 5px 15px rgb(2 2 2 / 40%);
+    cursor: pointer;
+}
+
+.tasks-main-main {
+    padding: 5px;
+}
+
+.tasks-sub {
+    padding: 10px;
+}

@@ -17,8 +17,11 @@ export default function Main() {
     return (
         <div className='main-page-main'>
             <div className='header-main'>
-                <span>Track Your Tasks</span>
-                <button onClick={handleAddTasks}>Add Task</button>
+                <div className='header-main2'>
+                    <span className='heading-main'>Track Your Tasks</span>
+                </div>
+                <button onClick={handleAddTasks} className='add-task-btn'>Add Task</button>
+
             </div>
             <div className='main-page'>
                 <div className='added-main'>

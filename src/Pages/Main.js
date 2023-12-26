@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
 import Tasks from "./Tasks";
 
 const addedTask = [];
 export default function Main() {
-  const [tasks, setTasks] = useState(addedTask);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")));
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
@@ -27,6 +27,7 @@ export default function Main() {
       status: "added",
     };
     setTasks((prevtasks) => [...prevtasks, task]);
+    localStorage.setItem("tasks", JSON.stringify(tasks))
     setOpenDialog(false);
     setTaskName("");
     setTaskDescription("");
@@ -39,7 +40,7 @@ export default function Main() {
         let index = tasks.findIndex((item) => item.name === taskMeta["name"])
         let tasksVar = [...tasks]
         tasksVar[index]['status'] = 'added'
-        setTasks([...tasksVar])
+      setTasks([...tasksVar])
     }
   };
   const handleonDropStarted = (e) => {
@@ -49,7 +50,7 @@ export default function Main() {
         let index = tasks.findIndex((item) => item.name === taskMeta["name"])
         let tasksVar = [...tasks]
         tasksVar[index]['status'] = 'started'
-        setTasks([...tasksVar])
+      setTasks([...tasksVar])
     }
   };
 
@@ -84,6 +85,10 @@ export default function Main() {
       });
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  },[tasks])
 
   return (
     <div className="main-page-main">
